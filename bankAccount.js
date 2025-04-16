@@ -1,15 +1,21 @@
 class BankAccount {
+    // Time Complexity: O(1)
+    // Just initializing values
     constructor(ownerName, initialBalance) {
       this.ownerName = ownerName;
       this.balance = initialBalance;
       this.history = [];
     }
   
+    // Time Complexity: O(1)
+    // Adds amount and pushes a string to the history array
     deposit(amount) {
       this.balance += amount;
       this.history.push(`Deposited $${amount}`);
     }
   
+    // Time Complexity: O(1)
+    // Subtracts amount and logs it, simple operations
     withdraw(amount) {
       if (amount <= this.balance) {
         this.balance -= amount;
@@ -19,6 +25,8 @@ class BankAccount {
       }
     }
   
+    // Time Complexity: O(1)
+    // Calls deposit and withdraw which are both O(1)
     transferTo(anotherAccount, amount) {
       if (amount <= this.balance) {
         this.withdraw(amount);
@@ -29,10 +37,14 @@ class BankAccount {
       }
     }
   
+    // Time Complexity: O(1)
+    // Just returns a formatted string
     getSummary() {
       return `${this.ownerName}'s balance is $${this.balance}`;
     }
   
+    // Time Complexity: O(k)
+    // k = number of entries in the history array
     printHistory() {
       console.log(`${this.ownerName}'s Transaction History:`);
       this.history.forEach(entry => console.log(entry));

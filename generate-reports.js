@@ -1,8 +1,13 @@
+// Time Complexity: O(n * m)
+// n = number of students, m = average number of scores per student
+
 function generateReports(students) {
     return students.map(student => {
+      // .reduce is O(m), where m = number of scores for this student
       const total = student.scores.reduce((sum, score) => sum + score, 0);
       const average = Math.round(total / student.scores.length);
   
+      // Grade calculation is O(1) (a few condition checks)
       let grade;
       if (average >= 90) {
         grade = "A";
